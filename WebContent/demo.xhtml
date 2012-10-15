@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/application-template.xhtml">
+
+	<ui:define name="container">
+		<h1>CDI Demo</h1>
+		<hr />
+
+		<h:messages infoClass="alert alert-info" warnClass="alert alert-warn"
+			errorClass="alert alert-error" />
+		<h:form>
+			<div class="row">
+				<h:link value="Create an user" outcome="/users/new"
+					styleClass="btn span2 btn-primary" />
+				<h:link value="Wizard" outcome="/users/wizard/page1"
+					styleClass="btn span2 btn-primary" />
+				<h:commandLink value="Send message"
+					action="#{messageDemoController.sendMessage}"
+					styleClass="btn span2 btn-primary" />
+				<h:commandLink value="Random severity"
+					action="#{messageDemoController.sendRandomMessage}"
+					styleClass="btn span2 btn-primary" />
+			</div>
+
+			<h3>
+				<h:outputText value="No users in database"
+					rendered="#{empty userController.users}" />
+			</h3>
+
+			<h:dataTable value="#{userController.users}" var="user"
+				styleClass="table table-striped"
+				rendered="#{not empty userController.users}">
+				<h:column>
+					<f:facet name="header">
+					ID
+				</f:facet>
+				#{user.id}
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+					First name
+				</f:facet>
+					#{user.firstName}
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+					Last name
+				</f:facet>
+				#{user.lastName}
+			</h:column>
+				<h:column>
+					<f:facet name="header">
+					email
+				</f:facet>
+				#{user.email}
+			</h:column>
+				<h:column>
+					<h:link outcome="/users/view">
+						<f:param value="#{user.firstName}" name="firstName" />
+						<f:param value="#{user.lastName}" name="lastName" />
+						<f:param value="#{user.email}" name="email" />
+					View
+				</h:link>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

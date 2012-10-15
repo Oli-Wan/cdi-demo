@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/application-template.xhtml">
+
+	<ui:define name="container">
+		<h1>Look at my user :</h1>
+		<hr />
+		<ul class="unstyled">
+			<li>Firstname : #{catchParamController.user.firstName}</li>
+			<li>Lastname : #{catchParamController.user.lastName}</li>
+			<li>email : #{catchParamController.user.email}</li>
+		</ul>
+	</ui:define>
+</ui:composition>

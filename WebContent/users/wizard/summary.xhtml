@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:custom="http://java.sun.com/jsf/composite/components"
+	template="/templates/application-template.xhtml">
+
+	<ui:define name="container">
+		<h1>Create a new user</h1>
+		<hr />
+		<h:form styleClass="form-horizontal">
+			<custom:controlGroup label="First name">
+				<p>#{userConversationController.user.firstName}</p>
+			</custom:controlGroup>
+			<custom:controlGroup label="Last name">
+				<p>#{userConversationController.user.lastName}</p>
+			</custom:controlGroup>
+			<custom:controlGroup label="email">
+				<p>#{userConversationController.user.email}</p>
+			</custom:controlGroup>
+			<div class="form-actions">
+				<h:commandButton value="Back" action="page2?faces-redirect=true"
+					styleClass="btn" />
+				<h:commandButton value="Create"
+					action="#{userConversationController.create}"
+					styleClass="btn btn-primary" />
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
